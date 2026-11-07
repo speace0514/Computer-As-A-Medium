@@ -15,6 +15,12 @@ public class Player : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody rb;
+    private GameObject spawnedBullet;
+
+    public float playerHealth = 100f;
+    public float playerBulletDamage = 25f;
+    public float playerBulletSpeed = 8f;
+    public float playerBulletKnockback = 0.1f;
 
     [SerializeField] private float horizontalScreenLimit;
     [SerializeField] private float verticalScreenLimitUp;
@@ -43,7 +49,12 @@ public class Player : MonoBehaviour
         //if the player presses the SPACE key, create a projectile
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            spawnedBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            //Finds the Bullet.cs and attaches its public components to variable named bulletScript
+            Bullet bulletScript = spawnedBullet.GetComponent<Bullet>();
+            //Passes variables to the new bullet
+            bulletScript.Initialize(1, playerBulletDamage, playerBulletSpeed, playerBulletKnockback);
+            spawnedBullet.tag = "PlayerBullet";
         }
     }
 
@@ -64,6 +75,18 @@ public class Player : MonoBehaviour
         if (Math.Abs(transform.position.x) > horizontalScreenLimit)
             transform.Translate(new Vector3(transform.position.x * -2, 0, 0));
 
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyBullet"))
+        {
+            Bullet bullet = other.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                playerHealth -= bullet.bulletDamage;
+                Destroy(other.gameObject);
+            }
+        }
     }
 
 }

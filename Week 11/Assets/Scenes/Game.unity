@@ -240,6 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115d8d333cd733d4282c192af4ced29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 100
+  playerBulletDamage: 25
+  playerBulletSpeed: 8
+  playerBulletKnockback: 0.25
   horizontalScreenLimit: 11
   verticalScreenLimitUp: 0
   verticalScreenLimitDown: 3.5

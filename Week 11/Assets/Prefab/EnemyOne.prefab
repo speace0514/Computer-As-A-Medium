@@ -119,7 +119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed70b92885deda43a25c386d6b3788d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 0
+  enemyHealth: 100
+  enemyVerticalSpeed: 1
+  enemyKnockBack: 1
+  enemyAttackSpeed: 40
+  enemyBulletSpeed: 4
+  enemyBulletDamage: 25
+  bulletPrefab: {fileID: 6405400452280573197, guid: b1eed6253aa069845b0edf3f90db799d, type: 3}
 --- !u!54 &8742823956298643694
 Rigidbody:
   m_ObjectHideFlags: 0
