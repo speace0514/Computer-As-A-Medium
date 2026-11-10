@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyOnePrefab: {fileID: 9207418728420716899, guid: 57d7aa5182902e24cb707961f14f52d5, type: 3}
+  evilBean: {fileID: 10071972745757801, guid: 21e7cec42815c7845aa03553abf27fe4, type: 3}
 --- !u!4 &2142600587
 Transform:
   m_ObjectHideFlags: 0

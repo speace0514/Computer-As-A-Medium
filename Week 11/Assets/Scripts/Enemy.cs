@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
     }
     void Shooting()
     {
-        Debug.Log(attackTimer);
+       
         attackTimer -= Time.deltaTime * 60f;
         if (attackTimer <= 0)
         {

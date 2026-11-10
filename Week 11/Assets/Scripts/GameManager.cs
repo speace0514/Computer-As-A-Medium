@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject enemyOnePrefab;
+    public GameObject evilBean;
 
     // Start is called before the first frame update
     void Start()
     {
       
         InvokeRepeating("CreateEnemyOne", 1, 2);
+        InvokeRepeating("CreateEvilBean", 1, 5);
     }
 
     // Update is called once per frame
@@ -24,5 +26,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enemy Spawned!");
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-9f, 9f), 6.5f, 0), Quaternion.identity);
+    }
+    void CreateEvilBean()
+    {
+        Debug.Log("EvilBean Spawned!");
+        Instantiate(evilBean, new Vector3(Random.Range(-9f, 9f), 6.5f, 0), Quaternion.identity);
     }
 }
