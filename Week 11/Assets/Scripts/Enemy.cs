@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public int enemyAttackSpeed = 60;
     public float enemyBulletSpeed = 4f;
     public float enemyBulletDamage = 25f;
+    public bool enemyJiggle = false;
+    public float jiggleSpeed = 1f;
+    public float jiggleLength = .5f;
 
     private float attackTimer = 60f;
     private GameObject spawnedBullet;
@@ -24,7 +27,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0, -enemyVerticalSpeed, 0) * Time.deltaTime * 3f);
+        if (enemyJiggle != true)
+        {
+            transform.Translate(new Vector3(0, -enemyVerticalSpeed, 0) * Time.deltaTime * 3f);
+        }
+        else
+        {
+            transform.Translate(new Vector3(Mathf.Cos(Time.time * jiggleSpeed) * jiggleLength, -enemyVerticalSpeed, 0) * Time.deltaTime * 3f);
+        }
         if (transform.position.y < -6.5f)
         {
             Debug.Log("I destroyed");

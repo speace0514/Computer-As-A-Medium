@@ -122,9 +122,12 @@ MonoBehaviour:
   enemyHealth: 100
   enemyVerticalSpeed: 1
   enemyKnockBack: 1
-  enemyAttackSpeed: 40
+  enemyAttackSpeed: 1000
   enemyBulletSpeed: 4
   enemyBulletDamage: 25
+  enemyJiggle: 0
+  jiggleSpeed: 5
+  jiggleLength: 0.5
   bulletPrefab: {fileID: 6405400452280573197, guid: b1eed6253aa069845b0edf3f90db799d, type: 3}
 --- !u!54 &8742823956298643694
 Rigidbody:
