@@ -187,3 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1886710396827344234, guid: e8e63456aa1d9d240ab38a0453e59388, type: 3}
+  isEnemy: 1
+  hasDespawn: 0
+  timer: 0

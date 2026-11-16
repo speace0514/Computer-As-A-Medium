@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
     public GameObject explosionPrefab;
-    public bool isEnemy;
+    public bool isEnemy = true;
     public bool hasDespawn;
     public float timer; 
 
