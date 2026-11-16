@@ -6,6 +6,10 @@ public class Enemy : MonoBehaviour
 {
 
     public GameObject explosionPrefab;
+    public bool isEnemy;
+    public bool hasDespawn;
+    public float timer; 
+
     
     private GameManager gameManager;
 
@@ -18,21 +22,38 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (hasDespawn == true)
+        {
+            timer = timer - Time.deltaTime;
+            if (timer <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
-        if(whatDidIHit.tag == "Player")
+       
+        if (isEnemy == true)
         {
-            whatDidIHit.GetComponent<PlayerController>().LoseALife();
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-        } else if(whatDidIHit.tag == "Weapons")
+            if (whatDidIHit.tag == "Player")
+            {
+                whatDidIHit.GetComponent<PlayerController>().LoseALife();
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+            else if (whatDidIHit.tag == "Weapons")
+            {
+                Destroy(whatDidIHit.gameObject);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                gameManager.AddScore(5);
+                Destroy(this.gameObject);
+            }
+        }
+        else
         {
-            Destroy(whatDidIHit.gameObject);
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            gameManager.AddScore(5);
+            gameManager.AddScore(1);
             Destroy(this.gameObject);
         }
     }
