@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyOnePrefab;
     public GameObject cloudPrefab;
     public GameObject coinPrefab;
+    public GameObject powerupPrefab;
     
 
     public TextMeshProUGUI livesText;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         CreateSky();
         InvokeRepeating("CreateEnemy", 1, 3);
         InvokeRepeating("CreateCoin", 1, 3);
+        InvokeRepeating("CreatePowerup", 4, 5);
     }
 
     // Update is called once per frame
@@ -44,13 +46,14 @@ public class GameManager : MonoBehaviour
     void CreateEnemy()
     {
         GameObject enemy = Instantiate(enemyOnePrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
-       
     }
     void CreateCoin()
     {
-        GameObject coin = Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.9f, 0), Quaternion.Euler(180, 0, 0));
-        
-   
+        GameObject coin = Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.9f, 0), Quaternion.Euler(0, 0, 0));
+    }
+    void CreatePowerup()
+    {
+        GameObject powerup = Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, Random.Range(-verticalScreenSize, verticalScreenSize) * 0.9f, 0), Quaternion.Euler(0, 0, 0));
     }
 
     void CreateSky()

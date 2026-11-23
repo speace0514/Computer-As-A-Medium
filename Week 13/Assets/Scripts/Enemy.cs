@@ -12,11 +12,13 @@ public class Enemy : MonoBehaviour
 
     
     private GameManager gameManager;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        player = GameObject.Find("Player(Clone)").GetComponent<GameObject>();
     }
 
     // Update is called once per frame
@@ -53,8 +55,16 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            gameManager.AddScore(1);
-            Destroy(this.gameObject);
+            if (this.gameObject.tag == "Coin" && whatDidIHit.tag == "Player")
+            {
+                gameManager.AddScore(1);
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.tag == "Powerup" && whatDidIHit.tag == "Player")
+            {
+                
+                Destroy(this.gameObject);
+            }
         }
     }
 }
