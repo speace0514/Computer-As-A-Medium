@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             hasShield = false;
             shieldPrefab.SetActive(false);
+            gameManager.PlaySound(1);
             return;
 
         }
@@ -112,6 +113,7 @@ public class PlayerController : MonoBehaviour
                     {
                         hasShield = true;
                         shieldPrefab.SetActive(true);
+                        gameManager.PlaySound(0);
                     }
                     break;
             }

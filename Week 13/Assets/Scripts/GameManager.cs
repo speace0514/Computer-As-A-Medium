@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] sounds;
 
     public GameObject playerPrefab;
     public GameObject enemyOnePrefab;
@@ -42,6 +44,18 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlaySound(int soundNumber)
+    {
+        if (soundNumber < 0 || soundNumber >= sounds.Length)
+            return;
+
+        audioSource.PlayOneShot(sounds[soundNumber]);
+    }
 
     void CreateEnemy()
     {
@@ -75,3 +89,4 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + currentLives;
     }
 }
+
